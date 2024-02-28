@@ -5,6 +5,20 @@ on:
     branches:
       - main
 jobs:
+  eslint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '21.x'
+      - name: Install npm dependencies
+        run: npm install
+        working-directory: ./web/vue-project
+      - name: Run ESLint
+        run: npm run lint
+        working-directory: ./web/vue-project
   Pujar-a-produccio-amb-SCP:
     runs-on: ubuntu-latest
     steps:
